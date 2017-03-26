@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+group 'com.mmanrique'
+version '1.0-SNAPSHOT'
+apply plugin: 'scala'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+
+war {
+    baseName = 'sampleapp'
+    version =  '1.0-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.12.1'
+    compile 'org.scalatra:scalatra_2.12:2.5.0'
+    compile 'org.scalatra:scalatra-scalate_2.12:2.5.0'
+    compile 'org.json4s:json4s-jackson_2.12:3.5.1'
+    //Spring boot configuration
+    compile("org.springframework.boot:spring-boot-starter-web")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtime("com.h2database:h2")
+}
